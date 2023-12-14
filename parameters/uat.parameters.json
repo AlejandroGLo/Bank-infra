@@ -3,29 +3,29 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "environmentType": {
-            "value": "nonprod"
+            "value": "prod"
         },
         "postgreSQLServerName": {
-            "value": "avgalvez-dbsrv-dev"
+            "value": "agalvez-dbsrv-uat"
         },
         "postgreSQLDatabaseName": {
-            "value": "agalvez-db-dev"
+            "value": "agalvez-db-uat"
         },
         "appServicePlanName": {
-            "value": "agalvez-asp-dev"
+            "value": "agalvez-asp-uat"
         },
         "appServiceAPIAppName": {
-            "value": "agalvez-be-dev"
+            "value": "agalvez-be-uat"
         },
         "appServiceAppName": {
-            "value": "agalvez-fe-dev"
+            "value": "agalvez-fe-uat"
         },
         "azureMonitorName": {
-            "value": "agalvez-am-dev"
-            },
+        "value": "agalvez-am-uat"
+        },
         "appInsightsName": {
-            "value": "agalvez-ai-dev"
-            },  
+        "value": "agalvez-ai-uat"
+        },
         "location": {
             "value": "North Europe"
         }
