@@ -29,6 +29,12 @@ jobs:
     needs: build
     environment:
       name: 'Development'
+    env:
+      ENV: dev
+      DBHOST: agalvez-db-dev.mysql.database.azure.com
+      DBNAME: agalvez-db-dev
+      FLASK_APP: app.py
+      FLASK_DEBUG: 1
 
     steps:
 
