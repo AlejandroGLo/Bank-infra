@@ -26,6 +26,9 @@ param appServiceAppName string = 'ie-bank-dev'
 param appServiceAPIAppName string = 'ie-bank-api-dev'
 @sys.description('The Azure location where the resources will be deployed')
 param location string = resourceGroup().location
+param postgreSQLServerLocation string = 'East US' // default value as an example
+param appServiceLocation string = 'West Europe' // default value as an example
+param azureMonitorLocation string = 'Central US' // default value as an example
 @sys.description('The value for the environment variable ENV')
 param appServiceAPIEnvVarENV string
 @sys.description('The value for the environment variable DBHOST')
@@ -49,7 +52,7 @@ param appInsightsName string
 
 resource postgresSQLServer 'Microsoft.DBforPostgreSQL/flexibleServers@2022-12-01' = {
   name: postgreSQLServerName
-  location: location
+  location: postgreSQLServerLocation
   sku: {
     name: 'Standard_B1ms'
     tier: 'Burstable'
@@ -93,7 +96,7 @@ resource postgresSQLDatabase 'Microsoft.DBforPostgreSQL/flexibleServers/database
 module appService 'modules/app-service.bicep' = {
   name: 'appService'
   params: {
-    location: location
+    location: appServiceLocation
     environmentType: environmentType
     appServiceAppName: appServiceAppName
     appServiceAPIAppName: appServiceAPIAppName
@@ -120,7 +123,7 @@ resource azureMonitor 'Microsoft.OperationalInsights/workspaces@2020-08-01' = {
 
 resource appInsights 'Microsoft.Insights/components@2020-02-02' = {
   name: appInsightsName
-  location: location
+  location: azureMonitorLocation
   kind: 'web'
   properties: {
     Application_Type: 'web'
