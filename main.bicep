@@ -52,7 +52,7 @@ param appInsightsName string
 
 resource postgresSQLServer 'Microsoft.DBforPostgreSQL/flexibleServers@2022-12-01' = {
   name: postgreSQLServerName
-  location: postgreSQLServerLocation
+  location: location
   sku: {
     name: 'Standard_B1ms'
     tier: 'Burstable'
@@ -96,7 +96,7 @@ resource postgresSQLDatabase 'Microsoft.DBforPostgreSQL/flexibleServers/database
 module appService 'modules/app-service.bicep' = {
   name: 'appService'
   params: {
-    location: appServiceLocation
+    location: location
     environmentType: environmentType
     appServiceAppName: appServiceAppName
     appServiceAPIAppName: appServiceAPIAppName
@@ -123,7 +123,7 @@ resource azureMonitor 'Microsoft.OperationalInsights/workspaces@2020-08-01' = {
 
 resource appInsights 'Microsoft.Insights/components@2020-02-02' = {
   name: appInsightsName
-  location: azureMonitorLocation
+  location: location
   kind: 'web'
   properties: {
     Application_Type: 'web'
