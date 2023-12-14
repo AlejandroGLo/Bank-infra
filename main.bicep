@@ -107,3 +107,4 @@ module appService 'modules/app-service.bicep' = {
 }
 
 output appServiceAppHostName string = appService.outputs.appServiceAppHostName
+
